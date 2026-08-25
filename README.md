@@ -1,5 +1,8 @@
 # wavexplain
 
+<img width="472" height="461" alt="image" src="https://github.com/user-attachments/assets/7c878817-cc5f-4370-a56c-b9d2b1f9c6fe" />
+
+
 Causal, counterfactual attribution for multi-series time-series forecasters.
 
 Most forecasting models give you a number. `wavexplain` gives you a number
