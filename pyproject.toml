@@ -1,0 +1,32 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "wavexplain"
+version = "0.1.0"
+description = "Causal, counterfactual attribution for multi-series time-series forecasters"
+readme = "README.md"
+license = { text = "MIT" }
+authors = [
+    { name = "Glib Kechyn" }
+]
+requires-python = ">=3.9"
+dependencies = [
+    "torch>=1.13",
+    "numpy>=1.23",
+]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Intended Audience :: Science/Research",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+
+[project.urls]
+Homepage = "https://github.com/kesjien/wavexplain"
+Repository = "https://github.com/kesjien/wavexplain"
+
+[tool.setuptools.packages.find]
+where = ["src"]
