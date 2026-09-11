@@ -103,8 +103,9 @@ render_card_html(
 
 This library grew out of extending a 2018 WaveNet-based sales forecasting model, which placed second of 1,671 teams in the Corporacion Favorita Grocery Sales Forecasting competition, with an interpretability layer. See the accompanying paper for the full evaluation.
 
-- Paper (preprint): [arXiv:PLACEHOLDER](https://arxiv.org/abs/PLACEHOLDER)
-- 2018 forecasting work: [arXiv:1803.04037](https://arxiv.org/abs/1803.04037)
+- Paper "How Faithful Is Attribution for Sales Forecasting? A Counterfactual Study
+" (preprint): [arXiv:2609.04797](https://arxiv.org/abs/2609.04797)
+- 2018 sales forecasting work: [arXiv:1803.04037](https://arxiv.org/abs/1803.04037)
 
 ## Citation
 
