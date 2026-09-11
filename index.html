@@ -10,7 +10,12 @@
   .wrap { max-width: 460px; margin: 0 auto; }
   .title { font-size: 22px; font-weight: 600; margin: 0 0 4px; }
   .subtitle { font-size: 14px; color: #5f5e5a; margin: 0 0 20px; }
-  select { width: 100%; font-size: 14px; padding: 10px 12px; border: 1px solid #d3d1c7; border-radius: 8px; background: #fff; color: #2c2c2a; margin-bottom: 20px; }
+  select { width: 100%; font-size: 14px; padding: 10px 12px; border: 1px solid #d3d1c7; border-radius: 8px; background: #fff; color: #2c2c2a; margin-bottom: 16px; }
+  .controls { background: #fff; border: 1px solid #e0ded4; border-radius: 10px; padding: 12px 14px; margin-bottom: 16px; display: none; }
+  .controls-title { font-size: 12px; color: #5f5e5a; font-weight: 600; margin: 0 0 8px; }
+  .toggle { display: flex; align-items: center; gap: 8px; font-size: 13px; color: #2c2c2a; margin: 6px 0; cursor: pointer; }
+  .toggle input { width: 16px; height: 16px; accent-color: #EF9F27; cursor: pointer; }
+  .controls-hint { font-size: 12px; color: #888780; margin: 8px 0 0; line-height: 1.5; }
   .card { background: #fff; border-radius: 12px; border: 1px solid #e0ded4; padding: 24px 28px; }
   .header { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; margin-bottom: 4px; }
   .muted { color: #5f5e5a; font-size: 13px; margin: 0; }
@@ -24,31 +29,29 @@
   .row { margin-bottom: 10px; }
   .row-label { display: flex; justify-content: space-between; font-size: 13px; margin-bottom: 4px; }
   .bar-track { background: #f1efe8; border-radius: 4px; height: 8px; overflow: hidden; }
-  .bar-fill { height: 100%; border-radius: 4px; }
+  .bar-fill { height: 100%; border-radius: 4px; transition: width .25s ease; }
   .total-row { display: flex; justify-content: space-between; align-items: center; margin-top: 16px; padding-top: 12px; border-top: 1px solid #e0ded4; }
   .footnote { font-size: 12px; color: #888780; margin-top: 16px; }
   .cta { display: flex; align-items: center; justify-content: center; gap: 6px; text-decoration: none; margin-top: 20px; padding: 11px; border: 1px solid #d3d1c7; border-radius: 8px; background: #fff; color: #2c2c2a; font-size: 14px; font-weight: 500; }
   .cta:hover { background: #f7f6f1; }
   .cta-note { font-size: 12px; color: #888780; text-align: center; margin: 8px 0 0; }
   .about { font-size: 12px; color: #888780; text-align: center; margin: 24px auto 0; max-width: 460px; line-height: 1.6; }
-  .how { max-width: 900px; margin: 40px auto 0; }
-  .how-title { font-size: 20px; font-weight: 600; color: #2c2c2a; margin: 0 0 4px; text-align: center; }
-  .how-sub { font-size: 14px; color: #5f5e5a; margin: 0 0 20px; text-align: center; }
-  .how-grid { display: flex; gap: 14px; flex-wrap: wrap; }
-  .how-step { flex: 1; min-width: 190px; background: #fff; border: 1px solid #e0ded4; border-radius: 12px; padding: 18px; }
-  .how-head { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
-  .how-num { background: #EF9F27; color: #fff; font-size: 12px; font-weight: 600; width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex: none; }
-  .how-name { font-size: 14px; font-weight: 600; color: #2c2c2a; }
-  .how-ill { width: 100%; height: 40px; margin-bottom: 8px; }
-  .how-desc { font-size: 13px; color: #5f5e5a; margin: 0; line-height: 1.5; }
 </style>
 </head>
 <body>
 <div class="wrap">
   <h1 class="title">wavexplain</h1>
-  <p class="subtitle">See why a sales forecast is what it is. Pick a product.</p>
+  <p class="subtitle">See why a sales forecast is what it is. Pick a product, then hide a driver to see what it was worth.</p>
 
   <select id="picker" aria-label="Pick a product"></select>
+
+  <div class="controls" id="controls">
+    <p class="controls-title">What if we hide a driver and forecast again?</p>
+    <label class="toggle"><input type="checkbox" id="t-promo" checked> Include the promotion days</label>
+    <label class="toggle"><input type="checkbox" id="t-recent" checked> Include the recent trend</label>
+    <p class="controls-hint">Unchecking replaces those days with the product's typical baseline and shows the model's real forecast without them. The drop is what that driver was worth.</p>
+  </div>
+
   <div class="card" id="card"></div>
 
   <a class="cta" id="colab" href="#">
@@ -58,50 +61,25 @@
   <p class="cta-note">Opens a Colab notebook. No install, no signup.</p>
 </div>
 
-<!-- How it works -->
-<div class="how">
-  <p class="how-title">How it works</p>
-  <p class="how-sub">No forecasting knowledge needed. Here is the whole idea.</p>
-  <div class="how-grid">
-    <div class="how-step">
-      <div class="how-head"><span class="how-num">1</span><span class="how-name">Start with the history</span></div>
-      <svg class="how-ill" viewBox="0 0 120 44"><polyline points="4,34 20,28 36,32 52,22 68,26 84,16 100,20 116,12" fill="none" stroke="#888780" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      <p class="how-desc">Take a product's recent daily sales.</p>
-    </div>
-    <div class="how-step">
-      <div class="how-head"><span class="how-num">2</span><span class="how-name">Forecast what's next</span></div>
-      <svg class="how-ill" viewBox="0 0 120 44"><polyline points="4,30 24,24 44,26 60,18" fill="none" stroke="#888780" stroke-width="2" stroke-linecap="round"/><polyline points="60,18 80,14 100,16 116,8" fill="none" stroke="#EF9F27" stroke-width="2" stroke-dasharray="4 3" stroke-linecap="round"/></svg>
-      <p class="how-desc">The model predicts the coming days.</p>
-    </div>
-    <div class="how-step">
-      <div class="how-head"><span class="how-num">3</span><span class="how-name">Ask &ldquo;what if?&rdquo;</span></div>
-      <svg class="how-ill" viewBox="0 0 120 44"><text x="8" y="28" font-family="Arial" font-size="26" fill="#1FA8A0">?</text><rect x="34" y="14" width="14" height="18" rx="2" fill="#e0ded4"/><rect x="54" y="10" width="14" height="22" rx="2" fill="#EF9F27"/><rect x="74" y="20" width="14" height="12" rx="2" fill="#e0ded4"/><text x="96" y="28" font-family="Arial" font-size="26" fill="#1FA8A0">?</text></svg>
-      <p class="how-desc">Hide the promotion days, or the recent days, and forecast again. The change shows what each part was worth.</p>
-    </div>
-    <div class="how-step">
-      <div class="how-head"><span class="how-num">4</span><span class="how-name">Get a plain answer</span></div>
-      <svg class="how-ill" viewBox="0 0 120 44"><rect x="6" y="30" width="60" height="6" rx="3" fill="#888780"/><rect x="6" y="20" width="90" height="6" rx="3" fill="#EF9F27"/><rect x="6" y="10" width="34" height="6" rx="3" fill="#888780"/></svg>
-      <p class="how-desc">Typical pattern + promotion + trend, adding up exactly to the forecast.</p>
-    </div>
-  </div>
-</div>
-
-<p class="about">wavexplain is a research tool. It shows how the model breaks down its own forecast into a typical pattern, a promotion effect, and a recent trend. These are the model's response to the data, not a claim about real-world cause.</p>
+<p class="about">wavexplain is a research tool. The toggles above switch between real model forecasts computed ahead of time, not numbers made up in your browser. They show how the model responds to hiding part of the input, not a claim about real-world cause.</p>
 
 <script>
-// Set this to your Colab notebook URL once it exists.
 const COLAB_URL = "https://colab.research.google.com/github/kesjien/wavexplain/blob/main/examples/see_a_forecast.ipynb";
 
-// Shown only until cards.json loads (e.g. when opened locally via file://).
+// helper: synthesize a plausible per-day curve summing ~ total (fallback only)
+function curve(total, n){ const w=[]; let s=0; for(let i=0;i<n;i++){const v=1+0.35*Math.sin(i*2*Math.PI/7); w.push(v); s+=v;} return w.map(v=>Math.round(total*v/s*10)/10); }
+function states(none, recent, promo, both, n){ return {
+  none:{total:none, forecast:curve(none,n)}, recent:{total:recent, forecast:curve(recent,n)},
+  promo:{total:promo, forecast:curve(promo,n)}, both:{total:both, forecast:curve(both,n)} }; }
+
+// Fallback (shown only until cards.json loads). Real cards carry real per-day curves + states.
 const FALLBACK_CARDS = [
-  { store: 49, item: 1392260, promotion_driven: true, horizon_label: "next 16 days", total_forecast: 84,
-    explanation: "Mostly explained by the active promotion, not a shift in underlying demand.",
-    drivers: [ {label:"Typical pattern for this product", value:40, kind:"base"}, {label:"Active promotion", value:38, kind:"promo"}, {label:"Recent trend", value:6, kind:"trend"} ],
-    history: [22,19,24,17,20,14,18,11,16,8,13,6], forecast: [10,14,12,15,13,11,9,12,10,13,11,9,12,10,8,11] },
-  { store: 12, item: 305080, promotion_driven: false, horizon_label: "next 16 days", total_forecast: 61,
-    explanation: "A steady seller. The forecast follows its usual weekly pattern with no unusual driver.",
-    drivers: [ {label:"Typical pattern for this product", value:55, kind:"base"}, {label:"Active promotion", value:0, kind:"promo"}, {label:"Recent trend", value:6, kind:"trend"} ],
-    history: [8,9,8,10,9,8,9,10,9,8,10,9], forecast: [9,8,9,9,8,9,9,8,9,9,8,9,9,8,9,9] }
+  { store: 49, item: 1392260, promotion_driven: true, horizon_label: "next 16 days",
+    history: [22,19,24,17,20,14,18,11,16,8,13,6],
+    states: states(40, 46, 78, 84, 16) },
+  { store: 12, item: 305080, promotion_driven: false, horizon_label: "next 16 days",
+    history: [8,9,8,10,9,8,9,10,9,8,10,9],
+    states: states(55, 61, 55, 61, 16) }
 ];
 
 function buildChart(history, forecast) {
@@ -126,39 +104,81 @@ function buildChart(history, forecast) {
     <text x="${xR}" y="${H-4}" font-size="11" fill="#BA7517" text-anchor="end">forecast</text>
   </svg>`;
 }
-
 function signed(v){ return v>0?`+${v}`:`${v}`; }
 
-function renderCard(c) {
-  const maxAbs=Math.max(1,...c.drivers.map(d=>Math.abs(d.value)));
-  const rows=c.drivers.map(d=>{
+// Build the view for the current toggle state, from precomputed real predictions.
+// Every value is a difference of real model forecasts, so the bars sum to the shown total.
+function viewFor(c, promo, recent) {
+  if (!c.states) {  // old-format card: static
+    return { total:c.total_forecast, forecast:c.forecast, drivers:c.drivers, note:c.explanation, hasToggles:false };
+  }
+  const S = c.states;
+  const key = (promo&&recent)?'both':promo?'promo':recent?'recent':'none';
+  const st = S[key];
+  const typical = S.none.total;
+  const drivers = [{label:"Typical pattern for this product", value: Math.round(typical), kind:"base"}];
+  if (recent) drivers.push({label:"Recent trend", value: Math.round(S.recent.total - S.none.total), kind:"trend"});
+  if (promo)  drivers.push({label:"Active promotion", value: Math.round((recent? S.both.total - S.recent.total : S.promo.total - S.none.total)), kind:"promo"});
+
+  let note;
+  const full = S.both.total, missing = Math.round(full - st.total);
+  if (promo && recent) {
+    note = c.promotion_driven ? "Mostly explained by the active promotion, not a shift in underlying demand."
+                              : "Follows this product's typical pattern.";
+  } else {
+    const hidden = [!promo?"the promotion":null, !recent?"the recent trend":null].filter(Boolean).join(" and ");
+    note = missing>0 ? `Hiding ${hidden} lowers the forecast by ${missing} units.` : `With ${hidden} hidden.`;
+  }
+  return { total:st.total, forecast:st.forecast, drivers, note, hasToggles:true };
+}
+
+function renderCard(c, v) {
+  const maxAbs=Math.max(1,...v.drivers.map(d=>Math.abs(d.value)));
+  const rows=v.drivers.map(d=>{
     const w=Math.round((Math.abs(d.value)/maxAbs)*100);
     const color=d.kind==="promo"?"#EF9F27":"#888780";
     const valColor=(d.kind==="promo"&&d.value>0)?"#854F0B":"#2c2c2a";
     const shown=d.kind==="base"?`${Math.round(d.value)}`:signed(Math.round(d.value));
     return `<div class="row"><div class="row-label"><span class="muted">${d.label}</span><span style="color:${valColor}">${shown}</span></div><div class="bar-track"><div class="bar-fill" style="width:${w}%; background:${color};"></div></div></div>`;
   }).join("");
-  const badge=c.promotion_driven?`<span class="badge promo">Promotion-driven</span>`:`<span class="badge standard">Standard pattern</span>`;
+  const promoDriver=v.drivers.find(d=>d.kind==="promo");
+  const promoActive=!!promoDriver && promoDriver.value>0;
+  const badge=promoActive?`<span class="badge promo">Promotion-driven</span>`:`<span class="badge standard">Standard pattern</span>`;
   return `<div class="header"><p class="muted">Store ${c.store} &middot; Item ${c.item}</p>${badge}</div>
     <p class="muted">Predicted sales, ${c.horizon_label}</p>
-    <p class="big-number">${Math.round(c.total_forecast)} units</p>
-    ${buildChart(c.history,c.forecast)}
-    <p class="explanation">${c.explanation}</p>
+    <p class="big-number">${Math.round(v.total)} units</p>
+    ${buildChart(c.history,v.forecast)}
+    <p class="explanation">${v.note}</p>
     <p class="section-title">What's driving this number</p>${rows}
-    <div class="total-row"><span class="muted">Total forecast</span><span style="font-weight:600; font-size:16px;">${Math.round(c.total_forecast)} units</span></div>
+    <div class="total-row"><span class="muted">Total forecast</span><span style="font-weight:600; font-size:16px;">${Math.round(v.total)} units</span></div>
     <p class="footnote">Based on 90 days of sales history. Breakdown is model-generated and may not capture every factor.</p>`;
 }
 
-function start(cards) {
-  const picker=document.getElementById("picker"), card=document.getElementById("card");
-  document.getElementById("colab").href=COLAB_URL;
-  picker.innerHTML=cards.map((c,i)=>`<option value="${i}">Store ${c.store} · Item ${c.item}</option>`).join("");
-  const show=i=>{ card.innerHTML=renderCard(cards[i]); };
-  picker.addEventListener("change",e=>show(+e.target.value));
-  show(0);
+let CARDS = [], idx = 0;
+const picker=()=>document.getElementById("picker");
+const cardEl=()=>document.getElementById("card");
+const controls=()=>document.getElementById("controls");
+const tPromo=()=>document.getElementById("t-promo");
+const tRecent=()=>document.getElementById("t-recent");
+
+function draw() {
+  const c = CARDS[idx];
+  const v = viewFor(c, tPromo().checked, tRecent().checked);
+  controls().style.display = v.hasToggles ? "block" : "none";
+  cardEl().innerHTML = renderCard(c, v);
 }
 
-fetch("cards.json").then(r=>r.ok?r.json():Promise.reject()).then(start).catch(()=>start(FALLBACK_CARDS));
+function start(cards) {
+  CARDS = cards; idx = 0;
+  document.getElementById("colab").href = COLAB_URL;
+  picker().innerHTML = cards.map((c,i)=>`<option value="${i}">Store ${c.store} · Item ${c.item}</option>`).join("");
+  picker().addEventListener("change", e=>{ idx=+e.target.value; tPromo().checked=true; tRecent().checked=true; draw(); });
+  tPromo().addEventListener("change", draw);
+  tRecent().addEventListener("change", draw);
+  draw();
+}
+
+fetch("cards.json?v=" + Date.now()).then(r=>r.ok?r.json():Promise.reject()).then(start).catch(()=>{ console.warn("cards.json did not load — showing fallback. Check that cards.json is committed at the repo root."); start(FALLBACK_CARDS); });
 </script>
 </body>
 </html>
