@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="docs/logo.svg" alt="wavexplain" width="360">
+  <img src="static/wavexplain-logo.svg" alt="wavexplain" width="360">
 </p>
 
 <p align="center">
