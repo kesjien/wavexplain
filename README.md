@@ -18,6 +18,19 @@ See why a forecast is what it is, with contributions that sum exactly to the pre
 
 Most forecasting models give you a number. `wavexplain` gives you a number plus an honest answer to *why*: which parts of a series' recent history actually drove this specific prediction, measured directly rather than approximated.
 
+## How it works
+
+<p align="center">
+  <img src="docs/how-it-works.svg" alt="How wavexplain works, in four steps" width="820">
+</p>
+
+1. **Start with the history.** Take a product's recent daily sales.
+2. **Forecast what's next.** The model predicts the coming days.
+3. **Ask "what if?"** Hide the promotion days, or the recent days, and forecast again. The change shows what each part was worth.
+4. **Get a plain answer.** Typical pattern + promotion + trend, adding up exactly to the forecast.
+
+*This shows how the model reached its number, not a claim about real-world cause.*
+
 ## Try it in your browser
 
 No install, no signup. Both notebooks run on public competition data.
@@ -103,8 +116,7 @@ render_card_html(
 
 This library grew out of extending a 2018 WaveNet-based sales forecasting model, which placed second of 1,671 teams in the Corporacion Favorita Grocery Sales Forecasting competition, with an interpretability layer. See the accompanying paper for the full evaluation.
 
-- Paper "How Faithful Is Attribution for Sales Forecasting? A Counterfactual Study
-" (preprint): [arXiv:2609.04797](https://arxiv.org/abs/2609.04797)
+- Paper "How Faithful Is Attribution for Sales Forecasting? A Counterfactual Study" (preprint): [arXiv:2609.04797](https://arxiv.org/abs/2609.04797)
 - 2018 sales forecasting work: [arXiv:1803.04037](https://arxiv.org/abs/1803.04037)
 
 ## Citation
@@ -116,8 +128,8 @@ If you use `wavexplain`, please cite:
   author  = {Kechyn, Glib},
   title   = {wavexplain: Counterfactual attribution for multi-series time-series forecasters},
   year    = {2026},
-  url      = {https://github.com/kesjien/wavexplain},
-  doi     = https://doi.org/10.5281/zenodo.22715454
+  url     = {https://github.com/kesjien/wavexplain},
+  doi     = {10.5281/zenodo.22715454}
 }
 ```
 
