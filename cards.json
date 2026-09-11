@@ -1,0 +1,368 @@
+[
+  {
+    "store": 1,
+    "item": 103665,
+    "promotion_driven": false,
+    "horizon_label": "next 16 days",
+    "total_forecast": 28,
+    "explanation": "Follows this product's typical sales pattern.",
+    "drivers": [
+      {
+        "label": "Typical pattern for this product",
+        "value": 28,
+        "kind": "base"
+      },
+      {
+        "label": "Active promotion",
+        "value": 0,
+        "kind": "promo"
+      },
+      {
+        "label": "Recent trend",
+        "value": 0,
+        "kind": "trend"
+      }
+    ],
+    "history": [
+      0.0,
+      0.0,
+      0.0,
+      5.0,
+      3.0,
+      0.0,
+      0.0,
+      2.0,
+      1.0,
+      4.0,
+      3.0,
+      4.0,
+      0.0,
+      2.0,
+      4.0,
+      2.0
+    ],
+    "forecast": [
+      1.6,
+      1.8,
+      1.6,
+      1.5,
+      2.2,
+      2.5,
+      1.7,
+      1.5,
+      1.6,
+      1.5,
+      1.4,
+      2.1,
+      2.3,
+      1.7,
+      1.4,
+      1.6
+    ]
+  },
+  {
+    "store": 1,
+    "item": 165988,
+    "promotion_driven": false,
+    "horizon_label": "next 16 days",
+    "total_forecast": 64,
+    "explanation": "Follows this product's typical sales pattern.",
+    "drivers": [
+      {
+        "label": "Typical pattern for this product",
+        "value": 58,
+        "kind": "base"
+      },
+      {
+        "label": "Active promotion",
+        "value": 0,
+        "kind": "promo"
+      },
+      {
+        "label": "Recent trend",
+        "value": 7,
+        "kind": "trend"
+      }
+    ],
+    "history": [
+      4.0,
+      2.0,
+      10.0,
+      11.0,
+      15.0,
+      2.0,
+      7.0,
+      2.0,
+      1.0,
+      6.0,
+      6.0,
+      9.0,
+      5.0,
+      3.0,
+      2.0,
+      1.0
+    ],
+    "forecast": [
+      4.2,
+      6.4,
+      5.4,
+      3.6,
+      3.2,
+      2.6,
+      2.6,
+      4.0,
+      5.9,
+      5.2,
+      3.6,
+      3.0,
+      2.5,
+      2.5,
+      3.8,
+      5.8
+    ]
+  },
+  {
+    "store": 4,
+    "item": 1146785,
+    "promotion_driven": false,
+    "horizon_label": "next 16 days",
+    "total_forecast": 55,
+    "explanation": "Follows this product's typical sales pattern.",
+    "drivers": [
+      {
+        "label": "Typical pattern for this product",
+        "value": 50,
+        "kind": "base"
+      },
+      {
+        "label": "Active promotion",
+        "value": 2,
+        "kind": "promo"
+      },
+      {
+        "label": "Recent trend",
+        "value": 4,
+        "kind": "trend"
+      }
+    ],
+    "history": [
+      2.0,
+      4.0,
+      1.0,
+      3.0,
+      5.0,
+      2.0,
+      5.0,
+      3.0,
+      4.0,
+      3.0,
+      4.0,
+      6.0,
+      3.0,
+      4.0,
+      7.0,
+      5.0
+    ],
+    "forecast": [
+      3.5,
+      3.4,
+      3.8,
+      3.7,
+      3.6,
+      3.6,
+      3.5,
+      3.1,
+      3.1,
+      3.6,
+      3.7,
+      3.5,
+      3.6,
+      3.5,
+      3.1,
+      3.1
+    ]
+  },
+  {
+    "store": 49,
+    "item": 1392260,
+    "promotion_driven": true,
+    "horizon_label": "next 16 days",
+    "total_forecast": 177,
+    "explanation": "Mostly explained by the active promotion, not a shift in underlying demand.",
+    "drivers": [
+      {
+        "label": "Typical pattern for this product",
+        "value": 33,
+        "kind": "base"
+      },
+      {
+        "label": "Active promotion",
+        "value": 143,
+        "kind": "promo"
+      },
+      {
+        "label": "Recent trend",
+        "value": 0,
+        "kind": "trend"
+      }
+    ],
+    "history": [
+      4.0,
+      10.0,
+      5.0,
+      16.0,
+      10.0,
+      19.0,
+      14.0,
+      8.0,
+      17.0,
+      16.0,
+      14.0,
+      2.0,
+      12.0,
+      13.0,
+      275.0,
+      2.0
+    ],
+    "forecast": [
+      15.0,
+      15.4,
+      12.4,
+      11.4,
+      13.1,
+      11.4,
+      9.7,
+      10.8,
+      11.5,
+      9.7,
+      9.4,
+      10.2,
+      9.3,
+      8.1,
+      9.2,
+      10.1
+    ]
+  },
+  {
+    "store": 20,
+    "item": 315176,
+    "promotion_driven": false,
+    "horizon_label": "next 16 days",
+    "total_forecast": 68,
+    "explanation": "Rising demand. Most of the forecast comes from a recent upward trend, not a promotion.",
+    "drivers": [
+      {
+        "label": "Typical pattern for this product",
+        "value": 33,
+        "kind": "base"
+      },
+      {
+        "label": "Active promotion",
+        "value": 6,
+        "kind": "promo"
+      },
+      {
+        "label": "Recent trend",
+        "value": 29,
+        "kind": "trend"
+      }
+    ],
+    "history": [
+      1.0,
+      5.0,
+      1.0,
+      5.0,
+      1.0,
+      0.0,
+      4.0,
+      2.0,
+      14.0,
+      5.0,
+      0.0,
+      2.0,
+      1.0,
+      5.0,
+      14.0,
+      39.0
+    ],
+    "forecast": [
+      5.3,
+      3.6,
+      3.2,
+      2.9,
+      3.7,
+      6.6,
+      7.2,
+      4.4,
+      3.1,
+      2.8,
+      2.7,
+      3.2,
+      5.9,
+      6.4,
+      4.1,
+      3.0
+    ]
+  },
+  {
+    "store": 39,
+    "item": 378332,
+    "promotion_driven": false,
+    "horizon_label": "next 16 days",
+    "total_forecast": 34,
+    "explanation": "Follows this product's typical sales pattern.",
+    "drivers": [
+      {
+        "label": "Typical pattern for this product",
+        "value": 36,
+        "kind": "base"
+      },
+      {
+        "label": "Active promotion",
+        "value": 0,
+        "kind": "promo"
+      },
+      {
+        "label": "Recent trend",
+        "value": -1,
+        "kind": "trend"
+      }
+    ],
+    "history": [
+      4.0,
+      1.0,
+      7.0,
+      1.0,
+      0.0,
+      1.0,
+      3.0,
+      3.0,
+      2.0,
+      3.0,
+      2.0,
+      1.0,
+      2.0,
+      10.0,
+      2.0,
+      0.0
+    ],
+    "forecast": [
+      1.9,
+      1.7,
+      1.6,
+      1.9,
+      2.8,
+      3.0,
+      2.4,
+      2.0,
+      1.7,
+      1.6,
+      1.9,
+      2.6,
+      2.9,
+      2.4,
+      1.9,
+      1.7
+    ]
+  }
+]
