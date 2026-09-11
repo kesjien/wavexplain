@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="static/wavexplain-logo.svg" alt="wavexplain" width="360">
+  <img src="docs/wavexplain-logo.svg" alt="wavexplain" width="360">
 </p>
 
 <p align="center">
@@ -40,8 +40,6 @@ The attribution is validated, not assumed. Across 30 series, deletion and insert
 <p align="center">
   <img src="docs/faithfulness.png" alt="Deletion/insertion faithfulness, aggregated across series" width="620">
 </p>
-
-*(Add `docs/faithfulness.png` and `docs/logo.svg`. Use the aggregate faithfulness curve from `faithfulness_test.py`, not a single example.)*
 
 ## Install
 
