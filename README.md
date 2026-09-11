@@ -5,7 +5,7 @@
 <p align="center">
   <a href="https://pypi.org/project/wavexplain/"><img alt="PyPI" src="https://img.shields.io/pypi/v/wavexplain.svg"></a>
   <a href="LICENSE"><img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-blue.svg"></a>
-  <a href="https://doi.org/10.5281/zenodo.22715454"><img alt="DOI" src="https://img.shields.io/badge/10.5281/zenodo.22715454.svg"></a>
+  <a href="https://doi.org/10.5281/zenodo.22715454"><img alt="DOI" src="https://img.shields.io/badge/10.5281/zenodo.22715454-blue.svg"></a>
   <a href="https://colab.research.google.com/github/kesjien/wavexplain/blob/main/examples/play_with_promotions.ipynb"><img alt="Open in Colab" src="https://colab.research.google.com/assets/colab-badge.svg"></a>
 </p>
 
