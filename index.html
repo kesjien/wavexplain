@@ -36,16 +36,17 @@
   .cta:hover { background: #f7f6f1; }
   .cta-note { font-size: 12px; color: #888780; text-align: center; margin: 8px 0 0; }
   .about { font-size: 12px; color: #888780; text-align: center; margin: 24px auto 0; max-width: 460px; line-height: 1.6; }
-  .how { max-width: 900px; margin: 40px auto 0; }
-  .how-title { font-size: 20px; font-weight: 600; color: #2c2c2a; margin: 0 0 4px; text-align: center; }
-  .how-sub { font-size: 14px; color: #5f5e5a; margin: 0 0 20px; text-align: center; }
-  .how-grid { display: flex; gap: 14px; flex-wrap: wrap; }
-  .how-step { flex: 1; min-width: 190px; background: #fff; border: 1px solid #e0ded4; border-radius: 12px; padding: 18px; }
-  .how-head { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
-  .how-num { background: #EF9F27; color: #fff; font-size: 12px; font-weight: 600; width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex: none; }
-  .how-name { font-size: 14px; font-weight: 600; color: #2c2c2a; }
-  .how-ill { width: 100%; height: 40px; margin-bottom: 8px; }
-  .how-desc { font-size: 13px; color: #5f5e5a; margin: 0; line-height: 1.5; }
+  .how { margin: 26px 0 8px; }
+  .how-title { font-size: 15px; font-weight: 600; color: #2c2c2a; margin: 0 0 2px; }
+  .how-sub { font-size: 13px; color: #5f5e5a; margin: 0 0 14px; }
+  .how-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .how-step { background: #fff; border: 1px solid #e0ded4; border-radius: 10px; padding: 12px 14px; }
+  .how-head { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; }
+  .how-num { display: inline-flex; align-items: center; justify-content: center; width: 20px; height: 20px; border-radius: 50%; background: #1FA8A0; color: #fff; font-size: 12px; font-weight: 600; flex: none; }
+  .how-name { font-size: 13px; font-weight: 600; color: #2c2c2a; }
+  .how-ill { width: 100%; height: auto; display: block; margin: 4px 0 8px; }
+  .how-desc { font-size: 12px; color: #5f5e5a; margin: 0; line-height: 1.5; }
+  @media (max-width: 380px) { .how-grid { grid-template-columns: 1fr; } }
 </style>
 </head>
 <body>
@@ -70,35 +71,40 @@
     Run this on your own data
   </a>
   <p class="cta-note">Opens a Colab notebook. No install, no signup.</p>
-</div>
 
-<div class="how">
-  <p class="how-title">How it works</p>
-  <p class="how-sub">No forecasting knowledge needed. Here is the whole idea.</p>
-  <div class="how-grid">
-    <div class="how-step">
-      <div class="how-head"><span class="how-num">1</span><span class="how-name">Start with the history</span></div>
-      <svg class="how-ill" viewBox="0 0 120 44"><polyline points="4,34 20,28 36,32 52,22 68,26 84,16 100,20 116,12" fill="none" stroke="#888780" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      <p class="how-desc">Take a product's recent daily sales.</p>
-    </div>
-    <div class="how-step">
-      <div class="how-head"><span class="how-num">2</span><span class="how-name">Forecast what's next</span></div>
-      <svg class="how-ill" viewBox="0 0 120 44"><polyline points="4,30 24,24 44,26 60,18" fill="none" stroke="#888780" stroke-width="2" stroke-linecap="round"/><polyline points="60,18 80,14 100,16 116,8" fill="none" stroke="#EF9F27" stroke-width="2" stroke-dasharray="4 3" stroke-linecap="round"/></svg>
-      <p class="how-desc">The model predicts the coming days.</p>
-    </div>
-    <div class="how-step">
-      <div class="how-head"><span class="how-num">3</span><span class="how-name">Ask &ldquo;what if?&rdquo;</span></div>
-      <svg class="how-ill" viewBox="0 0 120 44"><text x="8" y="28" font-family="Arial" font-size="26" fill="#1FA8A0">?</text><rect x="34" y="14" width="14" height="18" rx="2" fill="#e0ded4"/><rect x="54" y="10" width="14" height="22" rx="2" fill="#EF9F27"/><rect x="74" y="20" width="14" height="12" rx="2" fill="#e0ded4"/><text x="96" y="28" font-family="Arial" font-size="26" fill="#1FA8A0">?</text></svg>
-      <p class="how-desc">Hide the promotion days, or the recent days, and forecast again. The change shows what each part was worth.</p>
-    </div>
-    <div class="how-step">
-      <div class="how-head"><span class="how-num">4</span><span class="how-name">Get a plain answer</span></div>
-      <svg class="how-ill" viewBox="0 0 120 44"><rect x="6" y="30" width="60" height="6" rx="3" fill="#888780"/><rect x="6" y="20" width="90" height="6" rx="3" fill="#EF9F27"/><rect x="6" y="10" width="34" height="6" rx="3" fill="#888780"/></svg>
-      <p class="how-desc">Typical pattern + promotion + trend, adding up exactly to the forecast.</p>
+  <a class="cta" id="sample" href="mailto:glkesg@gmail.com?subject=wavexplain%20on%20my%20data&amp;body=Hi%20Glib%2C%20I%27d%20like%20to%20try%20wavexplain%20on%20my%20store%27s%20data.%20A%20short%20sample%20is%20attached%3A%20daily%20sales%20for%20a%20product%20or%20two%2C%20and%20which%20days%20had%20a%20promotion.">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="22 6 12 13 2 6"/></svg>
+    Not technical? Let me run it on your data
+  </a>
+  <p class="cta-note">Email a short sample (daily sales for a product or two, and which days had a promotion) and I'll send back the explanation card. No install, no code. I only need a small slice and won't share it.</p>
+
+  <div class="how">
+    <p class="how-title">How it works</p>
+    <p class="how-sub">No forecasting knowledge needed. Here is the whole idea.</p>
+    <div class="how-grid">
+      <div class="how-step">
+        <div class="how-head"><span class="how-num">1</span><span class="how-name">Start with the history</span></div>
+        <svg class="how-ill" viewBox="0 0 120 44"><polyline points="4,34 20,28 36,32 52,22 68,26 84,16 100,20 116,12" fill="none" stroke="#888780" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <p class="how-desc">Take a product's recent daily sales.</p>
+      </div>
+      <div class="how-step">
+        <div class="how-head"><span class="how-num">2</span><span class="how-name">Forecast what's next</span></div>
+        <svg class="how-ill" viewBox="0 0 120 44"><polyline points="4,30 24,24 44,26 60,18" fill="none" stroke="#888780" stroke-width="2" stroke-linecap="round"/><polyline points="60,18 80,14 100,16 116,8" fill="none" stroke="#EF9F27" stroke-width="2" stroke-dasharray="4 3" stroke-linecap="round"/></svg>
+        <p class="how-desc">The model predicts the coming days.</p>
+      </div>
+      <div class="how-step">
+        <div class="how-head"><span class="how-num">3</span><span class="how-name">Ask &ldquo;what if?&rdquo;</span></div>
+        <svg class="how-ill" viewBox="0 0 120 44"><text x="8" y="28" font-family="Arial" font-size="26" fill="#1FA8A0">?</text><rect x="34" y="14" width="14" height="18" rx="2" fill="#e0ded4"/><rect x="54" y="10" width="14" height="22" rx="2" fill="#EF9F27"/><rect x="74" y="20" width="14" height="12" rx="2" fill="#e0ded4"/><text x="96" y="28" font-family="Arial" font-size="26" fill="#1FA8A0">?</text></svg>
+        <p class="how-desc">Hide the promotion days, or the recent days, and forecast again. The change shows what each part was worth.</p>
+      </div>
+      <div class="how-step">
+        <div class="how-head"><span class="how-num">4</span><span class="how-name">Get a plain answer</span></div>
+        <svg class="how-ill" viewBox="0 0 120 44"><rect x="6" y="30" width="60" height="6" rx="3" fill="#888780"/><rect x="6" y="20" width="90" height="6" rx="3" fill="#EF9F27"/><rect x="6" y="10" width="34" height="6" rx="3" fill="#888780"/></svg>
+        <p class="how-desc">Typical pattern + promotion + trend, adding up exactly to the forecast.</p>
+      </div>
     </div>
   </div>
 </div>
-
 
 <p class="about">wavexplain is a research tool. The toggles above switch between real model forecasts computed ahead of time, not numbers made up in your browser. They show how the model responds to hiding part of the input, not a claim about real-world cause.</p>
 
