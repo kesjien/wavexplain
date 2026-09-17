@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How to explain a demand forecast (and why buyers don't trust the one they have)</title>
+<meta name="description" content="A demand forecast that nobody understands is a forecast nobody acts on. Why forecast interpretability, not just accuracy, is what changes an order, and how counterfactual attribution makes a forecast readable.">
+<link rel="canonical" href="https://kesjien.github.io/wavexplain/why-forecast-interpretability.html">
+<link rel="icon" type="image/svg+xml" href="docs/wavexplain-mark.svg">
+
+<meta property="og:title" content="How to explain a demand forecast (and why buyers don't trust the one they have)">
+<meta property="og:description" content="Forecast interpretability, not just accuracy, is what changes an order. Here's why, and how to make a forecast readable.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://kesjien.github.io/wavexplain/why-forecast-interpretability.html">
+<meta property="og:image" content="https://kesjien.github.io/wavexplain/docs/wavexplain-logo.svg">
+<meta name="twitter:card" content="summary_large_image">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "How to explain a demand forecast (and why buyers don't trust the one they have)",
+  "description": "Why forecast interpretability, not just accuracy, is what changes an order.",
+  "author": { "@type": "Person", "name": "Glib Kechyn" },
+  "mainEntityOfPage": "https://kesjien.github.io/wavexplain/why-forecast-interpretability.html",
+  "image": "https://kesjien.github.io/wavexplain/docs/wavexplain-logo.svg"
+}
+</script>
+
+<style>
+  body { font-family: -apple-system, Helvetica, Arial, sans-serif; background: #f1efe8; color: #2c2c2a; margin: 0; padding: 40px 16px; line-height: 1.65; }
+  .wrap { max-width: 680px; margin: 0 auto; }
+  .brand { display: inline-flex; align-items: center; gap: 8px; text-decoration: none; color: #888780; font-size: 13px; font-weight: 600; letter-spacing: .03em; margin-bottom: 28px; }
+  .brand img { height: 20px; }
+  h1 { font-size: 28px; font-weight: 600; line-height: 1.25; margin: 0 0 8px; }
+  .dek { font-size: 16px; color: #5f5e5a; margin: 0 0 28px; }
+  h2 { font-size: 19px; font-weight: 600; margin: 32px 0 8px; }
+  p { font-size: 16px; margin: 0 0 16px; }
+  a { color: #854F0B; }
+  .callout { background: #fff; border: 1px solid #e0ded4; border-radius: 12px; padding: 18px 22px; margin: 26px 0; }
+  .callout p { margin: 0; font-size: 15px; }
+  .cta { display: inline-flex; align-items: center; gap: 6px; text-decoration: none; margin: 8px 0 0; padding: 11px 18px; border: 1px solid #d3d1c7; border-radius: 8px; background: #fff; color: #2c2c2a; font-size: 15px; font-weight: 500; }
+  .cta:hover { background: #f7f6f1; }
+  .note { font-size: 13px; color: #888780; border-top: 1px solid #e0ded4; margin-top: 36px; padding-top: 16px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="brand" href="/wavexplain/"><img src="docs/wavexplain-mark.svg" alt="">wavexplain</a>
+
+  <h1>How to explain a demand forecast (and why buyers don't trust the one they have)</h1>
+  <p class="dek">A forecast nobody understands is a forecast nobody acts on. Which means the problem with most demand forecasts isn't accuracy. It's that they can't explain themselves.</p>
+
+  <p>Most teams trying to order the right amount of stock already have a demand forecast. A model looks at the sales history and predicts what next week will bring. The number exists. The trouble is that the person placing the order often doesn't believe it, because it arrives as a bare number with no reasoning attached. It says 84 units and nothing about why 84.</p>
+
+  <p>So the buyer does the sensible thing when they're unsure: they pad the order, a little extra so the shelf doesn't go empty. That padding is the cost. The forecast might even have been right, but a forecast you can't interrogate is one you won't follow, and accuracy that nobody acts on is worth nothing.</p>
+
+  <h2>Accuracy is the wrong thing to optimize</h2>
+  <p>A lot of forecasting effort goes into squeezing out another point of accuracy. But the thing that actually changes an order isn't a better number. It's a number you can understand. Being able to see that a predicted spike is a one-week promotion, not a lasting shift in demand. Or that a dip is ordinary seasonal noise, not sales falling off a cliff. A forecast you understand is a forecast you'll act on, and acting on it means ordering closer to real need.</p>
+
+  <h2>What "explaining a forecast" actually means</h2>
+  <p>A useful explanation answers a plain question: what is this number made of? For a demand forecast, that usually breaks into a few parts, the product's typical pattern, any active promotion, and a recent trend. If you can see how much of the forecast comes from each, you can judge whether to trust it.</p>
+
+  <p>The hard part is doing this honestly. A good method should give contributions that add up to exactly the forecast, with nothing left unexplained, and each contribution should be something you can check rather than a plausible-looking guess. One way to get there is counterfactual: to find out what the promotion was worth, hide the promotion days and run the forecast again. Whatever the number drops by is the promotion's real contribution, because it's the difference between two actual predictions, not an estimate.</p>
+
+  <div class="callout">
+    <p>You can try this directly. In the live demo, pick a product, switch the promotion off, and watch the forecast recompute. The drop is what the promotion was worth.</p>
+    <a class="cta" href="/wavexplain/">Open the live demo →</a>
+  </div>
+
+  <h2>Where this matters: ordering, and the waste that starts there</h2>
+  <p>The grocery industry spends heavily on the back end of food waste, markdowns, donation programs, organics diversion, spoilage tracking. All of it manages waste that already exists. But the cheapest place to prevent waste is earlier, at the moment the order is placed. Over-ordering is often less a data problem than a trust problem: the forecast was there, the buyer just didn't believe it, so they padded. A forecast the buyer can read is a forecast they can order against.</p>
+
+  <p>To be clear about the limits: making a forecast interpretable is an argument for better ordering, not a proven reduction in waste. wavexplain explains how a model reached its number; it has not been shown to cut waste at a real store, and "counterfactual" here means the model's response to changing its input, not real-world cause. The claim is that a forecast people trust is a forecast people follow, which is a reasonable place to start, not a measured result.</p>
+
+  <h2>Try it or read the method</h2>
+  <p>wavexplain is a free, open-source tool for exactly this: turning a demand forecast into a readable breakdown whose parts sum to the number. You can explore the interactive demo, or read the method and code on GitHub.</p>
+  <p>
+    <a class="cta" href="/wavexplain/">Live demo</a>
+    &nbsp;
+    <a class="cta" href="https://github.com/kesjien/wavexplain">Code on GitHub</a>
+  </p>
+
+  <p class="note">wavexplain is a research tool. It shows how a forecasting model responds to changes in its input, not real-world causation, and it has not been validated at a real retailer.</p>
+</div>
+</body>
+</html>
